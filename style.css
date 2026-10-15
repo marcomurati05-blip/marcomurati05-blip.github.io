@@ -1,0 +1,304 @@
+/*
+  style.css: controls how everything looks.
+
+  HOW CSS WORKS (quick version):
+  - A "selector" picks elements, e.g.  h1 { ... }  styles every <h1>,
+    and  .project { ... }  styles everything with class="project".
+  - Inside the braces you set properties, like  color: blue;
+*/
+
+/* ===== 1. COLOUR AND SPACING VARIABLES =====
+   Variables (the ones starting with --) let you change a colour in ONE place
+   and have it update everywhere. Try changing --accent to see. */
+:root {
+  --bg: #f4f6fa;        /* page background: cool off-white */
+  --surface: #ffffff;   /* background for project boxes */
+  --ink: #1b2433;       /* main text: deep navy */
+  --muted: #5a6577;     /* secondary text: grey-blue */
+  --line: #dde3ec;      /* borders and dividers */
+  --accent: #2f5bea;    /* links and buttons: cobalt blue */
+  --accent-ink: #ffffff;/* text on top of the accent colour */
+  --done: #1e7a4f;      /* "Live" status */
+  --soon: #9a5b00;      /* "In progress" / "Planned" status */
+
+  --font-head: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, sans-serif;
+
+  --max-width: 52rem;   /* stops lines of text getting too long to read */
+  --radius: 10px;
+}
+
+/* ===== 2. DARK MODE =====
+   If the visitor's device is set to dark mode, swap the colours. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111827;
+    --surface: #182133;
+    --ink: #e6eaf2;
+    --muted: #9aa5b8;
+    --line: #2a3548;
+    --accent: #8aa6ff;
+    --accent-ink: #0d1530;
+    --done: #5fd39a;
+    --soon: #f2b45c;
+  }
+}
+
+/* ===== 3. BASICS ===== */
+* { box-sizing: border-box; }   /* makes widths include padding: much easier to reason about */
+
+html { scroll-behavior: smooth; } /* smooth scrolling when you click a nav link */
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+a { color: var(--accent); }
+
+/* A clear outline when someone navigates with the keyboard (Tab key): important for accessibility */
+a:focus-visible, .button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== 4. NAVIGATION ===== */
+.site-header {
+  position: sticky;      /* stays at the top while you scroll */
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.9rem 1rem;
+  display: flex;               /* puts items in a row */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;             /* lets links wrap onto a new line on small phones */
+}
+
+.nav-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ===== 5. PAGE LAYOUT ===== */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 4rem;  /* so the sticky nav doesn't cover section titles */
+}
+
+.section h2 { font-size: 1.9rem; }
+
+/* ===== 6. HERO ===== */
+.hero { padding: 4.5rem 0 3.5rem; }
+
+/* The big changing greeting: the one bold, memorable thing on the page */
+.greeting {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 14vw, 7.5rem); /* scales with screen width, between a min and a max */
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25em 0.75rem;
+}
+
+#greeting-word {
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* script.js adds this class briefly to fade the word out before swapping it */
+#greeting-word.is-changing {
+  opacity: 0;
+  transform: translateY(0.15em);
+}
+
+.greeting-lang {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.hero h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); }
+
+.intro {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 38rem;
+  margin: 0 0 2rem;
+}
+
+/* ===== 7. BUTTONS ===== */
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+.button:hover { background: var(--surface); }
+
+.button-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.button-primary:hover { background: var(--accent); filter: brightness(1.1); }
+
+/* ===== 8. ABOUT: LANGUAGES ===== */
+.languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* as many columns as fit */
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+.languages dt { font-weight: 700; }
+.languages dd { margin: 0; color: var(--muted); }
+
+/* ===== 9. PROJECTS ===== */
+.project {
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+.project:last-child { border-bottom: none; }
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.project h3 { font-size: 1.35rem; margin: 0; }
+.project p { margin: 0.6rem 0; max-width: 40rem; }
+
+.tools {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-link { font-weight: 700; }
+
+/* Small status label next to each project title */
+.status {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;   /* fully rounded "pill" shape */
+  border: 1.5px solid currentColor;
+}
+.status-done { color: var(--done); }
+.status-soon { color: var(--soon); }
+
+/* ===== 10. SKILLS ===== */
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+}
+.skill-groups h3 { font-size: 1.15rem; }
+.skill-groups ul { margin: 0; padding-left: 1.2rem; }
+.skill-groups li { margin-bottom: 0.35rem; }
+
+/* ===== 11. EDUCATION TIMELINE ===== */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 2px solid var(--line);   /* the vertical line */
+}
+.timeline li {
+  position: relative;
+  padding-bottom: 2rem;
+}
+.timeline li:last-child { padding-bottom: 0; }
+
+/* The dot on the line for each entry */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 7px);
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.timeline h3 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+.timeline p { margin: 0; }
+.when { color: var(--muted); font-size: 0.95rem; }
+
+/* ===== 12. FOOTER ===== */
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ===== 13. REDUCED MOTION =====
+   Some people get motion sickness from animations and turn them off in their
+   device settings. This respects that choice. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #greeting-word { transition: none; }
+}

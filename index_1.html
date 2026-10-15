@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  index.html: the main page of your portfolio.
+  GitHub Pages automatically shows the file called "index.html" as your home page.
+  HTML describes WHAT is on the page (text, links, sections).
+  The look comes from style.css, and the small bits of behaviour come from script.js.
+-->
+<html lang="en">
+<head>
+  <!-- Character set, so accented letters (e.g. "Përshëndetje") display correctly -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale properly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marco Murati | Computer Science Student</title>
+  <!-- The description is what Google shows under your page title in search results -->
+  <meta name="description" content="Portfolio of Marco Murati, Computer Science student at the University of Westminster, London.">
+
+  <!-- Fonts from Google Fonts: one for headings, one for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+
+  <!-- Link to your stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION BAR ===== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a href="#top" class="nav-name">Marco Murati</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO (the first thing visitors see) =====
+         The greeting changes between the four languages you speak.
+         script.js does the switching; the first word is shown even if JavaScript is off. -->
+    <section class="hero">
+      <p class="greeting" aria-hidden="true">
+        <span id="greeting-word">Ciao</span><span class="greeting-lang" id="greeting-lang">Italian</span>
+      </p>
+      <h1>I'm Marco Murati.</h1>
+      <p class="intro">
+        I study Computer Science at the University of Westminster in London,
+        and I'm looking for my first role in tech. I'm especially interested in
+        databases, networks and security.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#projects">See my projects</a>
+        <!-- CHANGE THIS: replace YOUR-USERNAME with your GitHub username -->
+        <a class="button" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <h2>About me</h2>
+      <p>
+        I moved from Italy to London in 2018 and learned to adapt fast: new country,
+        new school, new language. That got me used to picking things up quickly,
+        which is exactly what I enjoy about programming.
+      </p>
+      <p>
+        Outside of class I build small projects to practise what I'm learning.
+        Before university I studied IT and Business, and I've organised community
+        events with the Prince's Trust and a charity bake sale for the Water Project.
+      </p>
+      <!-- A definition list (dl) is good for label + value pairs like this -->
+      <dl class="languages">
+        <div><dt>Italian</dt><dd>Native</dd></div>
+        <div><dt>English</dt><dd>Fluent (C1)</dd></div>
+        <div><dt>Albanian</dt><dd>Spoken</dd></div>
+        <div><dt>French</dt><dd>Basic</dd></div>
+      </dl>
+    </section>
+
+    <!-- ===== PROJECTS =====
+         Each project is an <article>. To add a new one, copy a whole <article> block,
+         paste it below, and change the text and links. -->
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Portfolio website</h3>
+          <span class="status status-done">Live</span>
+        </div>
+        <p>
+          This site. A responsive personal website written from scratch with no
+          frameworks, hosted for free on GitHub Pages. Includes a light and dark
+          theme that follows your device settings.
+        </p>
+        <p class="tools">HTML, CSS, JavaScript, GitHub Pages</p>
+        <!-- CHANGE THIS: replace YOUR-USERNAME -->
+        <a class="project-link" href="https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io" target="_blank" rel="noopener">View the code</a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Budget tracker</h3>
+          <span class="status status-soon">In progress</span>
+        </div>
+        <p>
+          An app for recording income and expenses, sorting them into categories
+          and showing monthly totals, with the data stored in a database.
+        </p>
+        <p class="tools">Python, SQLite</p>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Home network security lab</h3>
+          <span class="status status-soon">Planned</span>
+        </div>
+        <p>
+          Setting up Pi-hole on a Raspberry Pi to block ads and trackers across my
+          home network, then auditing my own network and writing up how I secured it.
+        </p>
+        <p class="tools">Raspberry Pi, Linux, Pi-hole, Nmap</p>
+      </article>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="skill-groups">
+        <div>
+          <h3>Technical</h3>
+          <ul>
+            <li>HTML, CSS and JavaScript</li>
+            <li>Database management</li>
+            <li>Network security basics</li>
+            <li>Productivity and collaboration tools</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Working with people</h3>
+          <ul>
+            <li>Clear written and spoken communication</li>
+            <li>Presenting ideas</li>
+            <li>Teamwork and event planning</li>
+            <li>Managing several deadlines at once</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION =====
+         This is in date order, newest first, so a timeline makes sense here. -->
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">2024 – present</p>
+          <h3>BSc Computer Science</h3>
+          <p>University of Westminster, London</p>
+        </li>
+        <li>
+          <p class="when">2019 – 2024</p>
+          <h3>Diplomas in Information Technology and Business Studies</h3>
+          <p>Chace Community School, Enfield. Plus 5 GCSEs including Maths, English and Science.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== CONTACT =====
+         Your phone number is deliberately NOT here: this page is public,
+         so keep your phone number for your CV only. -->
+    <section class="section" id="contact">
+      <h2>Get in touch</h2>
+      <p>I'm open to part-time roles, internships and placements in tech. The quickest way to reach me is by email.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="mailto:marcomurati05@gmail.com">Email me</a>
+        <!-- CHANGE THIS: replace YOUR-USERNAME -->
+        <a class="button" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub profile</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- script.js fills in the current year automatically -->
+    <p>&copy; <span id="year">2026</span> Marco Murati. Built by hand, hosted on GitHub Pages.</p>
+  </footer>
+
+  <!-- Load the JavaScript at the end so the page content appears first -->
+  <script src="script.js"></script>
+</body>
+</html>
