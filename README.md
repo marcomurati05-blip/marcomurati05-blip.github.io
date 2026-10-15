@@ -1,25 +1,35 @@
 # Marco Murati: Portfolio
 
-My personal portfolio website, built from scratch with HTML, CSS and JavaScript and hosted on GitHub Pages.
+My personal portfolio website, built with plain HTML, CSS and JavaScript and hosted on GitHub Pages.
 
-**Live site:** https://YOUR-USERNAME.github.io
+**Live site:** https://marcomurati05-blip.github.io
 
 ## Features
 
-- Responsive layout that works on phones, tablets and desktops
-- Automatic light and dark theme based on the visitor's device settings
-- Greeting that cycles through the four languages I speak
-- Accessible: keyboard focus outlines and respect for "reduce motion" settings
-- No frameworks or libraries
+- A hanging lamp you can click to switch on and off. It sways gently, and the whole page dims when it's off.
+- Dust drifting through the lamplight, drawn on an HTML canvas
+- A greeting that changes between the four languages I speak (Italian, English, Albanian, French), with letter-by-letter transitions
+- A background that slowly shifts from dusk to evening as you scroll
+- A timeline whose lamps light up one by one as you scroll past them
+- Light and dark themes that follow the visitor's device settings
+- Accessible: keyboard focus outlines, screen-reader text, and reduced motion for visitors who turn animations off
+- No frameworks or libraries; everything is in a single `index.html`
 
-## Files
+## How it works
 
-| File | What it does |
+| Part | Technique |
 | --- | --- |
-| `index.html` | The page content and structure |
-| `style.css` | Colours, fonts and layout |
-| `script.js` | The changing greeting and the footer year |
+| Lamp and espresso cup | Inline SVG with gradients |
+| Light beam | CSS `conic-gradient` with a mask |
+| Dust | `<canvas>` animated with `requestAnimationFrame` |
+| Lamp swing | A sine wave plus a decaying "kick" when you click |
+| Scroll effects | `IntersectionObserver` and a throttled scroll listener |
+| Themes | CSS custom properties and `prefers-color-scheme` |
+
+## Design
+
+Headings use Alegreya and body text uses Alegreya Sans, both from Google Fonts.
 
 ## What I learned
 
-<!-- Fill this in yourself once it's live, e.g. what was tricky, what you'd do differently -->
+<!-- Fill this in yourself, e.g. what was tricky, what you'd do differently -->
