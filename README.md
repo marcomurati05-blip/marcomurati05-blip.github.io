@@ -8,7 +8,7 @@ My personal portfolio website, built with plain HTML, CSS and JavaScript and hos
 
 - A hanging lamp you can click to switch on and off. It sways gently, and the whole page dims when it's off.
 - Dust drifting through the lamplight, drawn on an HTML canvas
-- A greeting that changes between the three languages I speak (Italian, English, Albanian,), with letter-by-letter transitions
+- A greeting whose letters rise into place when the page opens
 - A background that slowly shifts from dusk to evening as you scroll
 - A timeline whose lamps light up one by one as you scroll past them
 - Light and dark themes that follow the visitor's device settings
